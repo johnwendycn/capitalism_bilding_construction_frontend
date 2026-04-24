@@ -1,0 +1,702 @@
+<!-- Contact Page Content -->
+<!-- Breadcrumbs Section with VR Animation & Lightning -->
+<div class="rs-breadcrumbs breadcrumbs-overlay vr-breadcrumbs">
+    
+    <!-- Lightning Animation Container -->
+    <div class="breadcrumbs-lightning-container">
+        <div class="breadcrumbs-lightning lightning-bread-1">
+            <svg viewBox="0 0 500 300" preserveAspectRatio="none">
+                <polyline points="100,0 140,80 110,120 180,200 150,250 220,300" stroke="url(#breadGrad)" stroke-width="2.5" fill="none"/>
+            </svg>
+        </div>
+        <div class="breadcrumbs-lightning lightning-bread-2">
+            <svg viewBox="0 0 500 300" preserveAspectRatio="none">
+                <polyline points="400,0 360,60 390,120 330,180 370,240 310,300" stroke="url(#breadGrad)" stroke-width="2.5" fill="none"/>
+            </svg>
+        </div>
+        <div class="breadcrumbs-lightning lightning-bread-3">
+            <svg viewBox="0 0 500 300" preserveAspectRatio="none">
+                <polyline points="250,0 280,50 240,100 290,160 260,220 310,300" stroke="url(#breadGrad)" stroke-width="2.5" fill="none"/>
+            </svg>
+        </div>
+        <div class="breadcrumbs-lightning lightning-bread-4">
+            <svg viewBox="0 0 500 300" preserveAspectRatio="none">
+                <polyline points="50,200 100,150 80,100 150,50" stroke="url(#breadGrad)" stroke-width="2" fill="none"/>
+            </svg>
+        </div>
+    </div>
+    
+    <!-- Animated VR Grid Background -->
+    <div class="vr-grid-overlay"></div>
+    
+    <div class="breadcrumbs-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="page-title vr-glitch-title">
+                        <i class="fa fa-envelope"></i> Contact Us <i class="fa fa-bolt"></i>
+                    </h1>
+                    <ul class="vr-breadcrumb-list">
+                        <li>
+                            <a class="active" href="/">Home</a>
+                        </li>
+                        <li class="current">Contact</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Section Start - WHITE BACKGROUND -->
+<div class="contact-page-section sec-spacer contact-white-section">
+    <div class="container">
+        <div class="sec-title mb-50 text-center">
+            <h2 class="contact-title">GET IN TOUCH WITH US</h2>      
+            <p class="contact-subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        </div>
+        
+        <!-- Google Map -->
+        <div class="googleMap contact-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10021.751397791153!2d10.617219779333421!3d51.10038127213924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a489ec9a274fc5%3A0xc4fd489f48cf0fac!2sUfhoven%2C%2099947%20Bad%20Langensalza%2C%20Germany!5e0!3m2!1sen!2sbd!4v1724318090468!5m2!1sen!2sbd" width="100%" height="400" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        
+        <!-- Contact Address Section -->
+        <div class="row contact-address-section-white">
+            <div class="col-md-4">
+                <div class="contact-info-white contact-address-white">
+                    <div class="icon-wrapper">
+                        <i class="fa fa-map-marker"></i>
+                    </div>
+                    <h4>Our Address</h4>
+                    <p>503 Old Buffalo Street</p>
+                    <p>Northwest #205, New York-3087</p>
+                    <p>United States</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="contact-info-white contact-phone-white">
+                    <div class="icon-wrapper">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <h4>Phone Number</h4>
+                    <a href="tel:+13459096565">+1 (345) 909-6565</a>
+                    <a href="tel:+12398752235">+1 (239) 875-2235</a>
+                    <p class="hours">Mon-Fri: 9:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="contact-info-white contact-email-white">
+                    <div class="icon-wrapper">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <h4>Email Address</h4>
+                    <a href="mailto:info@redirectmall.com">info@redirectmall.com</a>
+                    <a href="mailto:support@redirectmall.com">support@redirectmall.com</a>
+                    <a href="https://www.redirectmall.com">www.redirectmall.com</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form Section -->
+        <div class="contact-comment-section-white">
+            <h3>Send Us a Message</h3>
+            <p class="form-description">Have questions about our VR Ecosystem or Compassionate Capitalism? Fill out the form below and our team will get back to you within 24 hours.</p>
+            
+            <div id="form-messages"></div>
+            <form id="contact-form-white" method="post" action="mailer.php">
+                <fieldset>
+                    <div class="row">                                      
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group-white">
+                                <label>First Name <span class="required">*</span></label>
+                                <input name="fname" id="fname" class="form-control-white" type="text" placeholder="Enter your first name">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group-white">
+                                <label>Last Name <span class="required">*</span></label>
+                                <input name="lname" id="lname" class="form-control-white" type="text" placeholder="Enter your last name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group-white">
+                                <label>Email <span class="required">*</span></label>
+                                <input name="email" id="email" class="form-control-white" type="email" placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group-white">
+                                <label>Subject <span class="required">*</span></label>
+                                <input name="subject" id="subject" class="form-control-white" type="text" placeholder="What is this regarding?">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="col-md-12 col-sm-12">    
+                            <div class="form-group-white">
+                                <label>Message <span class="required">*</span></label>
+                                <textarea cols="40" rows="6" id="message" name="message" class="textarea form-control-white" placeholder="Tell us how we can help..."></textarea>
+                            </div>
+                        </div>
+                    </div>							        
+                    <div class="form-group-white mb-0">
+                        <input class="btn-send-white" type="submit" value="Send Message">
+                    </div>
+                </fieldset>
+            </form>
+            
+            <!-- Alternative Contact Options -->
+            <div class="alternative-contact">
+                <p>Or reach us through our social media channels:</p>
+                <div class="social-contact-links">
+                    <a href="#" class="social-contact-icon"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="social-contact-icon"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="social-contact-icon"><i class="fa fa-linkedin"></i></a>
+                    <a href="#" class="social-contact-icon"><i class="fa fa-instagram"></i></a>
+                    <a href="#" class="social-contact-icon"><i class="fa fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ============================================ */
+/* BREADCRUMBS SECTION - VR DARK WITH LIGHTNING */
+/* ============================================ */
+
+.vr-breadcrumbs {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* VR Grid Overlay */
+.vr-grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(102, 126, 234, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(102, 126, 234, 0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    animation: gridMoveBread 20s linear infinite;
+}
+
+@keyframes gridMoveBread {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* Lightning Container for Breadcrumbs */
+.breadcrumbs-lightning-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.breadcrumbs-lightning {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.breadcrumbs-lightning svg {
+    width: 100%;
+    height: 100%;
+}
+
+.breadcrumbs-lightning svg polyline {
+    stroke: url(#breadGrad);
+    stroke-width: 2.5;
+    fill: none;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+}
+
+/* Lightning 1 - Top Left */
+.lightning-bread-1 {
+    top: 5%;
+    left: 5%;
+    width: 250px;
+    height: 180px;
+    animation: breadFlash1 8s infinite;
+}
+
+.lightning-bread-1 svg polyline {
+    animation: breadStrike1 0.8s ease-out forwards;
+}
+
+/* Lightning 2 - Top Right */
+.lightning-bread-2 {
+    top: 10%;
+    right: 5%;
+    width: 250px;
+    height: 180px;
+    animation: breadFlash2 10s infinite;
+}
+
+.lightning-bread-2 svg polyline {
+    animation: breadStrike2 0.6s ease-out forwards;
+}
+
+/* Lightning 3 - Center */
+.lightning-bread-3 {
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 150px;
+    animation: breadFlash3 12s infinite;
+}
+
+.lightning-bread-3 svg polyline {
+    animation: breadStrike3 0.7s ease-out forwards;
+}
+
+/* Lightning 4 - Side */
+.lightning-bread-4 {
+    bottom: 20%;
+    right: 10%;
+    width: 150px;
+    height: 120px;
+    animation: breadFlash4 14s infinite;
+}
+
+.lightning-bread-4 svg polyline {
+    animation: breadStrike4 0.5s ease-out forwards;
+}
+
+/* Lightning Keyframes */
+@keyframes breadFlash1 {
+    0%, 92%, 94%, 100% { opacity: 0; transform: translateX(-30px); }
+    93% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes breadFlash2 {
+    0%, 94%, 96%, 100% { opacity: 0; transform: translateX(30px); }
+    95% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes breadFlash3 {
+    0%, 96%, 98%, 100% { opacity: 0; transform: scale(0.8); }
+    97% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes breadFlash4 {
+    0%, 90%, 92%, 100% { opacity: 0; transform: translateY(20px); }
+    91% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes breadStrike1 {
+    0% { stroke-dashoffset: 500; stroke-width: 2; }
+    50% { stroke-width: 4; }
+    100% { stroke-dashoffset: 0; stroke-width: 2; }
+}
+
+@keyframes breadStrike2 {
+    0% { stroke-dashoffset: 500; stroke-width: 2; }
+    60% { stroke-width: 5; }
+    100% { stroke-dashoffset: 0; stroke-width: 2; }
+}
+
+@keyframes breadStrike3 {
+    0% { stroke-dashoffset: 500; stroke-width: 2; }
+    40% { stroke-width: 4; }
+    100% { stroke-dashoffset: 0; stroke-width: 2; }
+}
+
+@keyframes breadStrike4 {
+    0% { stroke-dashoffset: 300; stroke-width: 2; }
+    50% { stroke-width: 3; }
+    100% { stroke-dashoffset: 0; stroke-width: 2; }
+}
+
+/* Glow effect */
+.breadcrumbs-lightning svg polyline {
+    filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.5));
+}
+
+/* Glitch Title */
+.vr-glitch-title {
+    font-size: 52px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    animation: glitchTitle 3s infinite;
+    letter-spacing: 2px;
+}
+
+@keyframes glitchTitle {
+    0%, 100% { transform: skew(0deg, 0deg); }
+    95% { transform: skew(0deg, 0deg); }
+    96% { transform: skew(2deg, 1deg); text-shadow: -2px 0 #D71920; }
+    97% { transform: skew(-2deg, -1deg); text-shadow: 2px 0 #1F3A93; }
+    98% { transform: skew(1deg, 0deg); }
+    99% { transform: skew(-1deg, 1deg); }
+}
+
+.vr-glitch-title i {
+    animation: pulseIcon 2s infinite;
+}
+
+@keyframes pulseIcon {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.vr-breadcrumb-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.vr-breadcrumb-list li {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+}
+
+.vr-breadcrumb-list li a {
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.vr-breadcrumb-list li a:hover {
+    color: #764ba2;
+}
+
+.vr-breadcrumb-list li.current {
+    color: #fff;
+}
+
+.vr-breadcrumb-list li:not(:last-child)::after {
+    content: '/';
+    margin-left: 10px;
+    color: rgba(255,255,255,0.5);
+}
+
+.breadcrumbs-inner {
+    padding: 100px 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================ */
+/* CONTACT SECTION - WHITE BACKGROUND */
+/* ============================================ */
+
+.contact-white-section {
+    background: #ffffff;
+    padding: 80px 0;
+    position: relative;
+}
+
+.contact-title {
+    font-size: 38px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #D71920 0%, #1F3A93 50%, #E84A50 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 15px;
+}
+
+.contact-subtitle {
+    font-size: 18px;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+/* Google Map */
+.contact-map {
+    margin-bottom: 50px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Contact Info Cards */
+.contact-address-section-white {
+    margin-bottom: 60px;
+}
+
+.contact-info-white {
+    text-align: center;
+    padding: 30px 20px;
+    background: #f8f9fa;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+    border: 1px solid #e0e0e0;
+}
+
+.contact-info-white:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: #D71920;
+}
+
+.icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #D71920 0%, #1F3A93 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: all 0.3s ease;
+}
+
+.contact-info-white:hover .icon-wrapper {
+    transform: scale(1.1);
+}
+
+.icon-wrapper i {
+    font-size: 30px;
+    color: #fff;
+}
+
+.contact-info-white h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.contact-info-white p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 5px;
+}
+
+.contact-info-white a {
+    display: block;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.contact-info-white a:hover {
+    color: #D71920;
+}
+
+.hours {
+    font-size: 12px;
+    color: #888;
+    margin-top: 10px;
+}
+
+/* Contact Form Section */
+.contact-comment-section-white {
+    background: #f8f9fa;
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 20px;
+}
+
+.contact-comment-section-white h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.form-description {
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Form Groups */
+.form-group-white {
+    margin-bottom: 20px;
+}
+
+.form-group-white label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.required {
+    color: #D71920;
+}
+
+.form-control-white {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.form-control-white:focus {
+    outline: none;
+    border-color: #D71920;
+    box-shadow: 0 0 0 3px rgba(215, 25, 32, 0.1);
+}
+
+textarea.form-control-white {
+    resize: vertical;
+}
+
+/* Submit Button */
+.btn-send-white {
+    background: linear-gradient(135deg, #D71920 0%, #1F3A93 100%);
+    color: #fff;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-send-white:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(215, 25, 32, 0.3);
+}
+
+/* Alternative Contact */
+.alternative-contact {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.alternative-contact p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.social-contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-contact-icon {
+    width: 45px;
+    height: 45px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #D71920;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.social-contact-icon:hover {
+    background: linear-gradient(135deg, #D71920 0%, #1F3A93 100%);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .vr-glitch-title {
+        font-size: 32px;
+    }
+    
+    .contact-title {
+        font-size: 28px;
+    }
+    
+    .contact-subtitle {
+        font-size: 14px;
+    }
+    
+    .contact-comment-section-white {
+        padding: 25px;
+    }
+    
+    .contact-comment-section-white h3 {
+        font-size: 24px;
+    }
+    
+    .breadcrumbs-inner {
+        padding: 60px 0;
+    }
+    
+    .lightning-bread-1, .lightning-bread-2, .lightning-bread-3, .lightning-bread-4 {
+        transform: scale(0.6);
+    }
+}
+
+@media (max-width: 480px) {
+    .vr-glitch-title {
+        font-size: 24px;
+    }
+    
+    .contact-title {
+        font-size: 22px;
+    }
+    
+    .contact-info-white {
+        padding: 20px;
+    }
+    
+    .icon-wrapper {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .icon-wrapper i {
+        font-size: 24px;
+    }
+    
+    .contact-info-white h4 {
+        font-size: 18px;
+    }
+    
+    .contact-comment-section-white {
+        padding: 20px;
+    }
+    
+    .btn-send-white {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+    
+    .breadcrumbs-lightning-container {
+        display: none;
+    }
+}
+</style>
+
+<!-- SVG Gradient Definition -->
+<svg style="position: fixed; width: 0; height: 0;">
+    <defs>
+        <linearGradient id="breadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#D71920;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1F3A93;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+</svg>

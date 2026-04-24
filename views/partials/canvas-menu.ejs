@@ -1,0 +1,456 @@
+<!-- Canvas Menu start -->
+<nav class="right_menu_togle">
+    <div class="close-btn">
+        <span id="nav-close" class="text-center">x</span>
+    </div>
+    <div class="canvas-logo">
+        <a href="/"><img src="/img/captal.png" alt="logo"></a>
+    </div>
+    <ul class="sidebarnav_menu list-unstyled main-menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/event">Event</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+    <div class="search-wrap"> 
+        <label class="screen-reader-text">Search for:</label> 
+        <div class="search-container">
+            <input type="search" id="searchInput" placeholder="Search anywhere on page..." name="s" class="search-input" value=""> 
+            <button type="button" id="searchButton"><i class="fa fa-search"></i></button>
+        </div>
+        <div id="searchResults" class="search-results"></div>
+    </div>
+</nav>
+<!-- Canvas Menu end -->
+
+<style>
+/* Search Container Styles */
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: #fff;
+    color: #333;
+}
+
+.search-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#searchButton {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#searchButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Search Results Styles */
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    margin-top: 8px;
+}
+
+.search-results.active {
+    display: block;
+}
+
+.search-result-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.search-result-item:hover {
+    background: #f8f9fa;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-title {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.search-result-preview {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.search-result-highlight {
+    background: #ffeb3b;
+    color: #333;
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+.no-results {
+    padding: 20px;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+}
+
+.search-stats {
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Clear search button */
+.clear-search {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    display: none;
+    font-size: 16px;
+}
+
+.clear-search.show {
+    display: block;
+}
+
+/* Scroll to highlight */
+.search-highlight {
+    background-color: #ffeb3b;
+    transition: background-color 0.5s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .search-results {
+        max-height: 300px;
+    }
+    
+    .search-result-title {
+        font-size: 13px;
+    }
+    
+    .search-result-preview {
+        font-size: 11px;
+    }
+}
+</style>
+
+<script>
+(function() {
+    // DOM Elements
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const searchResults = document.getElementById('searchResults');
+    
+    let currentSearchTerm = '';
+    let searchTimeout = null;
+    
+    // Function to extract text content from an element
+    function getElementText(element) {
+        // Skip script, style, and nav elements
+        if (element.tagName === 'SCRIPT' || 
+            element.tagName === 'STYLE' || 
+            element.tagName === 'NAV' ||
+            element.classList?.contains('search-wrap') ||
+            element.classList?.contains('search-results')) {
+            return '';
+        }
+        return element.textContent || '';
+    }
+    
+    // Function to search all text on the page
+    function searchPageContent(searchTerm) {
+        if (!searchTerm || searchTerm.trim().length < 2) {
+            return [];
+        }
+        
+        const term = searchTerm.toLowerCase().trim();
+        const results = [];
+        const seenElements = new Set();
+        
+        // Get all text-containing elements on the page
+        const textElements = document.querySelectorAll('body *:not(script):not(style):not(nav):not(.search-wrap):not(.search-results)');
+        
+        textElements.forEach(element => {
+            // Skip if element is inside search results or has no text
+            if (element.closest('.search-wrap') || element.closest('.search-results')) {
+                return;
+            }
+            
+            const text = getElementText(element);
+            if (text && text.toLowerCase().includes(term)) {
+                // Get the most relevant parent element
+                let targetElement = element;
+                while (targetElement && targetElement.children.length === 1 && targetElement.textContent.length < 200) {
+                    targetElement = targetElement.parentElement;
+                    if (!targetElement || targetElement.tagName === 'BODY') break;
+                }
+                
+                const elementId = targetElement.id || targetElement.className || targetElement.tagName;
+                if (seenElements.has(elementId + targetElement.textContent.substring(0, 50))) {
+                    return;
+                }
+                seenElements.add(elementId + targetElement.textContent.substring(0, 50));
+                
+                // Extract preview text (around the match)
+                const fullText = text;
+                const matchIndex = fullText.toLowerCase().indexOf(term);
+                const start = Math.max(0, matchIndex - 50);
+                const end = Math.min(fullText.length, matchIndex + term.length + 50);
+                let preview = fullText.substring(start, end);
+                
+                // Highlight the search term in preview
+                const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+                const highlightedPreview = preview.replace(regex, '<mark class="search-result-highlight">$1</mark>');
+                
+                // Get title/heading context
+                let title = '';
+                let heading = targetElement.closest('h1, h2, h3, h4, h5, h6, .title, .heading, [class*="title"]');
+                if (heading) {
+                    title = heading.textContent.trim();
+                } else {
+                    title = targetElement.tagName.toLowerCase();
+                }
+                
+                results.push({
+                    element: targetElement,
+                    title: title.substring(0, 60),
+                    preview: highlightedPreview,
+                    fullText: fullText.substring(0, 150)
+                });
+            }
+        });
+        
+        // Remove duplicates by element reference
+        const uniqueResults = [];
+        const seenElementsRef = new Set();
+        for (const result of results) {
+            if (!seenElementsRef.has(result.element)) {
+                seenElementsRef.add(result.element);
+                uniqueResults.push(result);
+            }
+        }
+        
+        return uniqueResults.slice(0, 20); // Limit to 20 results
+    }
+    
+    // Function to display search results
+    function displayResults(results, searchTerm) {
+        if (!searchResults) return;
+        
+        searchResults.innerHTML = '';
+        
+        if (results.length === 0) {
+            searchResults.innerHTML = '<div class="no-results">🔍 No results found. Try a different search term.</div>';
+            searchResults.classList.add('active');
+            return;
+        }
+        
+        // Add stats
+        const statsDiv = document.createElement('div');
+        statsDiv.className = 'search-stats';
+        statsDiv.innerHTML = `Found ${results.length} result${results.length !== 1 ? 's' : ''} for "${searchTerm}"`;
+        searchResults.appendChild(statsDiv);
+        
+        // Add results
+        results.forEach((result, index) => {
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'search-result-item';
+            resultDiv.setAttribute('data-index', index);
+            
+            resultDiv.innerHTML = `
+                <div class="search-result-title">${escapeHtml(result.title)}</div>
+                <div class="search-result-preview">${result.preview}...</div>
+            `;
+            
+            resultDiv.addEventListener('click', () => {
+                // Scroll to element and highlight it
+                if (result.element) {
+                    result.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Add temporary highlight
+                    const originalBg = result.element.style.backgroundColor;
+                    result.element.style.transition = 'background-color 0.5s ease';
+                    result.element.style.backgroundColor = '#ffeb3b';
+                    setTimeout(() => {
+                        result.element.style.backgroundColor = originalBg;
+                    }, 2000);
+                    
+                    // Close results
+                    searchResults.classList.remove('active');
+                    searchInput.value = '';
+                }
+            });
+            
+            searchResults.appendChild(resultDiv);
+        });
+        
+        searchResults.classList.add('active');
+    }
+    
+    // Function to perform search
+    function performSearch() {
+        const searchTerm = searchInput.value.trim();
+        
+        if (searchTerm.length < 2) {
+            searchResults.classList.remove('active');
+            return;
+        }
+        
+        currentSearchTerm = searchTerm;
+        const results = searchPageContent(searchTerm);
+        displayResults(results, searchTerm);
+    }
+    
+    // Debounced search (for real-time typing)
+    function debouncedSearch() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            performSearch();
+        }, 300);
+    }
+    
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
+    // Event listeners
+    if (searchButton) {
+        searchButton.addEventListener('click', performSearch);
+    }
+    
+    if (searchInput) {
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch();
+            }
+        });
+        
+        searchInput.addEventListener('input', debouncedSearch);
+        
+        // Clear results when input is empty
+        searchInput.addEventListener('input', () => {
+            if (searchInput.value.trim().length < 2) {
+                searchResults.classList.remove('active');
+            }
+        });
+    }
+    
+    // Close search results when clicking outside
+    document.addEventListener('click', (e) => {
+        if (searchResults && searchResults.classList.contains('active')) {
+            if (!searchResults.contains(e.target) && 
+                !searchInput.contains(e.target) && 
+                !searchButton.contains(e.target)) {
+                searchResults.classList.remove('active');
+            }
+        }
+    });
+    
+    // Keyboard navigation for results
+    let selectedIndex = -1;
+    
+    if (searchInput) {
+        searchInput.addEventListener('keydown', (e) => {
+            const items = document.querySelectorAll('.search-result-item');
+            
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
+                updateSelectedItem(items, selectedIndex);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                selectedIndex = Math.max(selectedIndex - 1, -1);
+                updateSelectedItem(items, selectedIndex);
+            } else if (e.key === 'Escape') {
+                searchResults.classList.remove('active');
+                selectedIndex = -1;
+            }
+        });
+    }
+    
+    function updateSelectedItem(items, index) {
+        items.forEach((item, i) => {
+            if (i === index) {
+                item.style.background = '#f0f0f0';
+                item.scrollIntoView({ block: 'nearest' });
+            } else {
+                item.style.background = '';
+            }
+        });
+    }
+    
+    // Add clear button functionality
+    const clearBtn = document.createElement('button');
+    clearBtn.className = 'clear-search';
+    clearBtn.innerHTML = '✕';
+    clearBtn.setAttribute('aria-label', 'Clear search');
+    
+    if (searchInput && searchInput.parentNode) {
+        searchInput.parentNode.appendChild(clearBtn);
+        
+        searchInput.addEventListener('input', () => {
+            if (searchInput.value.length > 0) {
+                clearBtn.classList.add('show');
+            } else {
+                clearBtn.classList.remove('show');
+                searchResults.classList.remove('active');
+            }
+        });
+        
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchInput.focus();
+            searchResults.classList.remove('active');
+            clearBtn.classList.remove('show');
+        });
+    }
+    
+    console.log('Search functionality initialized!');
+})();
+</script>

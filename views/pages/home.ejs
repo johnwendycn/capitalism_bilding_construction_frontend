@@ -1,0 +1,1645 @@
+<div id="rs-slider" class="slider-overlay-2">
+    <div id="home-slider-fallback" style="position: relative; width: 100%; margin: 0 auto;">
+        <div class="slider-container" style="position: relative; width: 100%; height: 620px; overflow: hidden; background: #000;">
+            <div class="slider-track" style="display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); height: 100%; width: 100%;">
+                <div class="slider-slide" style="min-width: 100%; width: 100%; height: 620px; position: relative; flex-shrink: 0; background: #000;">
+                    <!-- Background blur layer for professional effect -->
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0;">
+                        <img src="/img/2.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center; filter: blur(20px); transform: scale(1.1);">
+                    </div>
+                    <!-- Main image - shows completely without cropping -->
+                    <img src="/img/2.jpg" alt="Slide 1" style="position: relative; width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; z-index: 1;">
+                    <div class="slide-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%); display: flex; align-items: center; justify-content: center; z-index: 2;">
+                       
+                    </div>
+                </div>
+                <div class="slider-slide" style="min-width: 100%; width: 100%; height: 620px; position: relative; flex-shrink: 0; background: #000;">
+                    <!-- Background blur layer for professional effect -->
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0;">
+                        <img src="/img/4.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center; filter: blur(20px); transform: scale(1.1);">
+                    </div>
+                    <!-- Main image - shows completely without cropping -->
+                    <img src="/img/4.jpg" alt="Slide 2" style="position: relative; width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; z-index: 1;">
+                    <div class="slide-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%); display: flex; align-items: center; justify-content: center; z-index: 2;">
+                      
+                    </div>
+                </div>
+            </div>
+            <button class="slider-prev" style="position: absolute; left: 30px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); color: #fff; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 20; font-size: 28px; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">‹</button>
+            <button class="slider-next" style="position: absolute; right: 30px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); color: #fff; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 20; font-size: 28px; transition: all 0.3s; display: flex; align-items: center; justify-content: center;">›</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Keyframe animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Full width on any device */
+    #rs-slider {
+        width: 100%;
+        position: relative;
+        background: #000;
+    }
+    
+    #home-slider-fallback {
+        width: 100%;
+        margin: 0 auto;
+        background: #000;
+    }
+    
+    .slider-container {
+        width: 100% !important;
+        height: 620px !important;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .slider-track {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .slider-slide {
+        width: 100% !important;
+        min-width: 100% !important;
+        height: 620px !important;
+        position: relative;
+    }
+    
+    /* Navigation buttons hover effect */
+    .slider-prev:hover, .slider-next:hover {
+        background: #007bff !important;
+        transform: translateY(-50%) scale(1.1);
+    }
+    
+    /* Dots indicator styling */
+    .slider-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 20;
+    }
+    
+    .slider-dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+        background: rgba(255,255,255,0.5);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .slider-dot:hover {
+        background: rgba(255,255,255,0.8);
+        transform: scale(1.2);
+    }
+    
+    .slider-dot.active {
+        background: #007bff;
+        width: 25px;
+        border-radius: 10px;
+    }
+    
+    /* Responsive heights for different devices */
+    @media (max-width: 1200px) {
+        .slider-container, .slider-slide {
+            height: 520px !important;
+        }
+        .slide-content a { padding: 12px 30px !important; font-size: 15px !important; }
+    }
+    
+    @media (max-width: 992px) {
+        .slider-container, .slider-slide {
+            height: 450px !important;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .slider-container, .slider-slide {
+            height: 350px !important;
+        }
+        .slide-content a { padding: 10px 25px !important; font-size: 14px !important; }
+        .slider-prev, .slider-next {
+            width: 35px !important;
+            height: 35px !important;
+            font-size: 20px !important;
+            left: 15px !important;
+            right: 15px !important;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .slider-container, .slider-slide {
+            height: 280px !important;
+        }
+        .slide-content a { padding: 8px 20px !important; font-size: 12px !important; }
+    }
+    
+    @media (max-width: 480px) {
+        .slider-container, .slider-slide {
+            height: 250px !important;
+        }
+        .slider-prev, .slider-next {
+            width: 30px !important;
+            height: 30px !important;
+            font-size: 16px !important;
+        }
+    }
+</style>
+
+<script>
+// Professional slider - Complete image visibility with blur background effect
+(function() {
+    'use strict';
+    
+    const track = document.querySelector('.slider-track');
+    const slides = document.querySelectorAll('.slider-slide');
+    const prevBtn = document.querySelector('.slider-prev');
+    const nextBtn = document.querySelector('.slider-next');
+    let currentIndex = 0;
+    let interval;
+    let isTransitioning = false;
+    let autoplayEnabled = true;
+    
+    console.log('✓ Slider initialized with', slides.length, 'slides - Complete image visibility mode');
+    
+    if (slides.length === 0) {
+        console.error('✗ No slides found!');
+        return;
+    }
+    
+    function updateSlider() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        updateDots();
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 600);
+    }
+    
+    function nextSlide() {
+        if (isTransitioning || !autoplayEnabled) return;
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlider();
+        resetInterval();
+    }
+    
+    function prevSlide() {
+        if (isTransitioning) return;
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlider();
+        resetInterval();
+    }
+    
+    function resetInterval() {
+        if (interval) clearInterval(interval);
+        if (autoplayEnabled) {
+            interval = setInterval(nextSlide, 5000);
+        }
+    }
+    
+    function createDots() {
+        const existingDots = document.querySelector('.slider-dots');
+        if (existingDots) existingDots.remove();
+        
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'slider-dots';
+        
+        for (let i = 0; i < slides.length; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'slider-dot';
+            dot.setAttribute('data-index', i);
+            dot.addEventListener('click', function() {
+                if (isTransitioning) return;
+                currentIndex = parseInt(this.getAttribute('data-index'));
+                updateSlider();
+                resetInterval();
+            });
+            dotsContainer.appendChild(dot);
+        }
+        
+        const container = document.querySelector('.slider-container');
+        if (container) {
+            container.appendChild(dotsContainer);
+        }
+        return dotsContainer.children;
+    }
+    
+    function updateDots() {
+        const dots = document.querySelectorAll('.slider-dot');
+        dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+    
+    if (prevBtn && nextBtn && slides.length > 0) {
+        const newPrevBtn = prevBtn.cloneNode(true);
+        const newNextBtn = nextBtn.cloneNode(true);
+        prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+        nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+        
+        const finalPrevBtn = document.querySelector('.slider-prev');
+        const finalNextBtn = document.querySelector('.slider-next');
+        
+        finalPrevBtn.addEventListener('click', prevSlide);
+        finalNextBtn.addEventListener('click', nextSlide);
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            }
+        });
+        
+        const slider = document.querySelector('.slider-container');
+        if (slider) {
+            slider.addEventListener('mouseenter', () => {
+                autoplayEnabled = false;
+                if (interval) clearInterval(interval);
+            });
+            
+            slider.addEventListener('mouseleave', () => {
+                autoplayEnabled = true;
+                resetInterval();
+            });
+            
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            slider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            slider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 50) nextSlide();
+                if (touchEndX > touchStartX + 50) prevSlide();
+            });
+        }
+        
+        createDots();
+        updateDots();
+        resetInterval();
+        
+        console.log('✓ Slider ready - Images show COMPLETELY with blur background effect');
+    }
+})();
+</script>
+<!-- Slider Area End -->
+
+<!-- Services Start -->
+ <div class="rs-search-courses">
+    <div class="container">
+        <div class="search-wrapper" style="max-width: 600px; margin: 0 auto;">
+            <input 
+                type="text" 
+                id="liveSearchInput" 
+                class="global-search-input" 
+                placeholder="Start typing to search anything on this page..." 
+                aria-label="Search entire page content"
+                style="width: 100%; padding: 14px 18px; font-size: 16px; border: 1px solid #ddd; border-radius: 4px; background: #fff; outline: none; transition: all 0.2s; box-sizing: border-box;"
+                onfocus="this.style.borderColor='#007bff'; this.style.boxShadow='0 0 0 3px rgba(0,123,255,0.1)'"
+                onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'"
+            >
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchInput = document.getElementById('liveSearchInput');
+    let debounceTimer;
+
+    // Function to clear all highlights
+    function clearHighlights() {
+        const highlighted = document.querySelectorAll('.search-highlight');
+        highlighted.forEach(el => {
+            const parent = el.parentNode;
+            parent.replaceChild(document.createTextNode(el.textContent), el);
+            parent.normalize();
+        });
+    }
+
+    // Function to highlight text in the page
+    function highlightText(searchTerm) {
+        if (!searchTerm || searchTerm.trim() === '') {
+            clearHighlights();
+            return;
+        }
+
+        clearHighlights();
+
+        const walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT,
+            {
+                acceptNode: function(node) {
+                    if (node.parentElement.tagName === 'SCRIPT' || 
+                        node.parentElement.tagName === 'STYLE' ||
+                        node.parentElement.classList?.contains('search-highlight') ||
+                        node.parentElement.id === 'liveSearchInput') {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            }
+        );
+
+        const textNodes = [];
+        while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+        const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        
+        textNodes.forEach(node => {
+            const text = node.nodeValue;
+            if (regex.test(text)) {
+                const span = document.createElement('span');
+                span.className = 'search-highlight';
+                span.innerHTML = text.replace(regex, '<mark style="background:#ff9800; color:#000; padding: 2px 0; border-radius: 3px; font-weight: normal;">$1</mark>');
+                node.parentNode.replaceChild(span, node);
+            }
+        });
+
+        // Scroll to first match (only on first match of this search)
+        const firstMatch = document.querySelector('mark');
+        if (firstMatch && !window._scrolledToMatch) {
+            firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            window._scrolledToMatch = true;
+            setTimeout(() => { window._scrolledToMatch = false; }, 500);
+        }
+    }
+
+    // Live search with debouncing for better performance
+    searchInput.addEventListener('input', function(e) {
+        clearTimeout(debounceTimer);
+        const searchTerm = e.target.value.trim();
+        
+        debounceTimer = setTimeout(() => {
+            highlightText(searchTerm);
+        }, 300); // 300ms delay for smooth typing
+    });
+
+    // Clear highlights when input is cleared
+    searchInput.addEventListener('keyup', function(e) {
+        if (e.target.value === '') {
+            clearHighlights();
+        }
+    });
+</script>
+
+<!-- Services End -->
+<div class="blog-page-area sec-spacer news-white-section">
+    <div class="container">
+        <div class="sec-title mb-50 text-center">
+            <h2 class="news-title">BUILDING Construction NEWS & UPDATES</h2>      
+            <p class="news-subtitle">Stay informed about the latest developments in Compassionate Capitalism and VR Ecosystem</p>
+        </div>
+        
+        <!-- News Item 1 -->
+        <div class="row mb-50 blog-inner news-item-white">
+            <div class="col-lg-6 col-md-12">
+                <div class="blog-images-white">
+                    <a href="blog-details.html">
+                        <div class="image-wrapper">
+                            <img src="images/blogpage/1.jpg" alt="News Image">
+                            <div class="image-overlay">
+                                <i class="fa fa-link"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="blog-content-white">
+                    <div class="date-white">
+                        <i class="fa fa-calendar-check-o"></i> 15 November 2024
+                    </div>
+                    <h4><a href="blog-details.html">RedirectMall Launches Revolutionary VR Ecosystem with 28 Development Channels</a></h4>
+                    <ul class="blog-meta-white">
+                        <li><i class="fa fa-user-o"></i> Admin</li>
+                        <li><i class="fa fa-comments-o"></i> 12</li>
+                        <li><i class="fa fa-tag"></i> VR Ecosystem</li>
+                    </ul>
+                    <p>RedirectMall Limited proudly announces the launch of its groundbreaking Virtual Reality Ecosystem, featuring 28 specialized subsystems spanning social infrastructure, economic & finance, governance & security, physical infrastructure, and human development. This innovative platform marks a significant milestone in advancing Compassionate Capitalism.</p>
+                    <a class="news-btn" href="blog-details.html">Read More <i class="fa fa-angle-right"></i></a>
+                </div> 
+            </div>
+        </div>
+        
+        <!-- News Item 2 -->
+        <div class="row mb-50 blog-inner news-item-white">
+            <div class="col-lg-6 col-md-12">
+                <div class="blog-images-white">
+                    <a href="blog-details.html">
+                        <div class="image-wrapper">
+                            <img src="images/blogpage/2.jpg" alt="News Image">
+                            <div class="image-overlay">
+                                <i class="fa fa-link"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="blog-content-white">
+                    <div class="date-white">
+                        <i class="fa fa-calendar-check-o"></i> 28 October 2024
+                    </div>
+                    <h4><a href="blog-details.html">RedirectMall Named Finalist for Ethical Business Awards 2024</a></h4>
+                    <ul class="blog-meta-white">
+                        <li><i class="fa fa-user-o"></i> Admin</li>
+                        <li><i class="fa fa-comments-o"></i> 8</li>
+                        <li><i class="fa fa-tag"></i> Awards</li>
+                    </ul>
+                    <p>RedirectMall has been recognized as a finalist for the prestigious Ethical Business Awards 2024, highlighting the company's commitment to Compassionate Capitalism and sustainable business practices. The award celebrates organizations that demonstrate exceptional ethical standards and social responsibility.</p>
+                    <a class="news-btn" href="blog-details.html">Read More <i class="fa fa-angle-right"></i></a>
+                </div> 
+            </div>
+        </div>
+        
+        <!-- News Item 3 -->
+        <div class="row mb-50 blog-inner news-item-white">
+            <div class="col-lg-6 col-md-12">
+                <div class="blog-images-white">
+                    <a href="blog-details.html">
+                        <div class="image-wrapper">
+                            <img src="images/blogpage/3.jpg" alt="News Image">
+                            <div class="image-overlay">
+                                <i class="fa fa-link"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="blog-content-white">
+                    <div class="date-white">
+                        <i class="fa fa-calendar-check-o"></i> 10 October 2024
+                    </div>
+                    <h4><a href="blog-details.html">Strategic Partnership Announcement: Expanding Global Reach</a></h4>
+                    <ul class="blog-meta-white">
+                        <li><i class="fa fa-user-o"></i> Admin</li>
+                        <li><i class="fa fa-comments-o"></i> 15</li>
+                        <li><i class="fa fa-tag"></i> Partnership</li>
+                    </ul>
+                    <p>RedirectMall announces strategic partnerships with leading technology providers to enhance its VR Ecosystem capabilities. These collaborations will accelerate the development of innovative solutions across all 28 subsystems, creating unprecedented opportunities for global communities.</p>
+                    <a class="news-btn" href="blog-details.html">Read More <i class="fa fa-angle-right"></i></a>
+                </div> 
+            </div>
+        </div>
+        
+      
+        
+        <!-- Pagination -->
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination pagination-news">
+                        <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"><i class="fa fa-angle-left"></i></a></li>
+                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link dotted" href="#">...</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item"><a class="page-link" href="#">6</a></li>
+                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ============================================ */
+/* BREADCRUMBS SECTION - VR DARK WITH LIGHTNING */
+/* ============================================ */
+
+.vr-breadcrumbs {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* VR Grid Overlay */
+.vr-grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(102, 126, 234, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(102, 126, 234, 0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    animation: gridMoveBread 20s linear infinite;
+}
+
+@keyframes gridMoveBread {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* Lightning Container for Breadcrumbs */
+.breadcrumbs-lightning-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.breadcrumbs-lightning {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.breadcrumbs-lightning svg {
+    width: 100%;
+    height: 100%;
+}
+
+.breadcrumbs-lightning svg polyline {
+    stroke: url(#breadGrad);
+    stroke-width: 2.5;
+    fill: none;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+}
+
+/* Lightning 1 - Top Left */
+.lightning-bread-1 {
+    top: 5%;
+    left: 5%;
+    width: 250px;
+    height: 180px;
+    animation: breadFlash1 8s infinite;
+}
+
+.lightning-bread-1 svg polyline {
+    animation: breadStrike1 0.8s ease-out forwards;
+}
+
+/* Lightning 2 - Top Right */
+.lightning-bread-2 {
+    top: 10%;
+    right: 5%;
+    width: 250px;
+    height: 180px;
+    animation: breadFlash2 10s infinite;
+}
+
+.lightning-bread-2 svg polyline {
+    animation: breadStrike2 0.6s ease-out forwards;
+}
+
+/* Lightning 3 - Center */
+.lightning-bread-3 {
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 150px;
+    animation: breadFlash3 12s infinite;
+}
+
+.lightning-bread-3 svg polyline {
+    animation: breadStrike3 0.7s ease-out forwards;
+}
+
+/* Lightning 4 - Side */
+.lightning-bread-4 {
+    bottom: 20%;
+    right: 10%;
+    width: 150px;
+    height: 120px;
+    animation: breadFlash4 14s infinite;
+}
+
+.lightning-bread-4 svg polyline {
+    animation: breadStrike4 0.5s ease-out forwards;
+}
+
+/* Lightning Keyframes */
+@keyframes breadFlash1 {
+    0%, 92%, 94%, 100% { opacity: 0; transform: translateX(-30px); }
+    93% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes breadFlash2 {
+    0%, 94%, 96%, 100% { opacity: 0; transform: translateX(30px); }
+    95% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes breadFlash3 {
+    0%, 96%, 98%, 100% { opacity: 0; transform: scale(0.8); }
+    97% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes breadFlash4 {
+    0%, 90%, 92%, 100% { opacity: 0; transform: translateY(20px); }
+    91% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes breadStrike1 {
+    0% { stroke-dashoffset: 500; stroke-width: 2; }
+    50% { stroke-width: 4; }
+    100% { stroke-dashoffset: 0; stroke-width: 2; }
+}
+
+@keyframes breadStrike2 {
+    0% { stroke-dashoffset: 500; stroke-width: 2; }
+    60% { stroke-width: 5; }
+    100% { stroke-dashoffset: 0; stroke-width: 2; }
+}
+
+@keyframes breadStrike3 {
+    0% { stroke-dashoffset: 500; stroke-width: 2; }
+    40% { stroke-width: 4; }
+    100% { stroke-dashoffset: 0; stroke-width: 2; }
+}
+
+@keyframes breadStrike4 {
+    0% { stroke-dashoffset: 300; stroke-width: 2; }
+    50% { stroke-width: 3; }
+    100% { stroke-dashoffset: 0; stroke-width: 2; }
+}
+
+/* Glow effect */
+.breadcrumbs-lightning svg polyline {
+    filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.5));
+}
+
+/* Glitch Title */
+.vr-glitch-title {
+    font-size: 52px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    animation: glitchTitle 3s infinite;
+    letter-spacing: 2px;
+}
+
+@keyframes glitchTitle {
+    0%, 100% { transform: skew(0deg, 0deg); }
+    95% { transform: skew(0deg, 0deg); }
+    96% { transform: skew(2deg, 1deg); text-shadow: -2px 0 #D71920; }
+    97% { transform: skew(-2deg, -1deg); text-shadow: 2px 0 #1F3A93; }
+    98% { transform: skew(1deg, 0deg); }
+    99% { transform: skew(-1deg, 1deg); }
+}
+
+.vr-glitch-title i {
+    animation: pulseIcon 2s infinite;
+}
+
+@keyframes pulseIcon {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.vr-breadcrumb-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.vr-breadcrumb-list li {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+}
+
+.vr-breadcrumb-list li a {
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.vr-breadcrumb-list li a:hover {
+    color: #764ba2;
+}
+
+.vr-breadcrumb-list li.current {
+    color: #fff;
+}
+
+.vr-breadcrumb-list li:not(:last-child)::after {
+    content: '/';
+    margin-left: 10px;
+    color: rgba(255,255,255,0.5);
+}
+
+.breadcrumbs-inner {
+    padding: 100px 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================ */
+/* NEWS SECTION - WHITE BACKGROUND */
+/* ============================================ */
+
+.news-white-section {
+    background: #ffffff;
+    padding: 80px 0;
+    position: relative;
+}
+
+.news-title {
+    font-size: 38px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #D71920 0%, #1F3A93 50%, #E84A50 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 15px;
+}
+
+.news-subtitle {
+    font-size: 18px;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+/* News Items */
+.news-item-white {
+    background: #f8f9fa;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+}
+
+.news-item-white:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.blog-images-white {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    min-height: 300px;
+}
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.blog-images-white img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.news-item-white:hover .blog-images-white img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(215, 25, 32, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.news-item-white:hover .image-overlay {
+    opacity: 1;
+}
+
+.image-overlay i {
+    font-size: 30px;
+    color: #fff;
+}
+
+/* Blog Content */
+.blog-content-white {
+    padding: 30px;
+}
+
+.date-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 15px;
+    background: linear-gradient(135deg, rgba(215,25,32,0.1), rgba(31,58,147,0.1));
+    border-radius: 30px;
+    font-size: 13px;
+    color: #D71920;
+    margin-bottom: 15px;
+}
+
+.date-white i {
+    color: #1F3A93;
+}
+
+.blog-content-white h4 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.blog-content-white h4 a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.blog-content-white h4 a:hover {
+    background: linear-gradient(135deg, #D71920 0%, #1F3A93 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.blog-meta-white {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.blog-meta-white li {
+    font-size: 13px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.blog-meta-white li i {
+    color: #D71920;
+}
+
+.blog-content-white p {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* News Button */
+.news-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 25px;
+    background: linear-gradient(135deg, #D71920 0%, #1F3A93 100%);
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.news-btn:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(215, 25, 32, 0.3);
+    color: #fff;
+}
+
+/* Pagination */
+.pagination-news {
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.pagination-news .page-item {
+    margin: 0 5px;
+}
+
+.pagination-news .page-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #e0e0e0;
+    color: #666;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.pagination-news .page-link:hover {
+    background: linear-gradient(135deg, #D71920 0%, #1F3A93 100%);
+    color: #fff;
+    border-color: transparent;
+}
+
+.pagination-news .page-item.active .page-link {
+    background: linear-gradient(135deg, #D71920 0%, #1F3A93 100%);
+    color: #fff;
+    border-color: transparent;
+}
+
+.pagination-news .page-item.disabled .page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-news .page-link.dotted {
+    background: transparent;
+    border: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .vr-glitch-title {
+        font-size: 32px;
+    }
+    
+    .news-title {
+        font-size: 28px;
+    }
+    
+    .news-subtitle {
+        font-size: 14px;
+    }
+    
+    .blog-content-white h4 {
+        font-size: 18px;
+    }
+    
+    .blog-meta-white {
+        gap: 15px;
+    }
+    
+    .blog-images-white img {
+        height: 250px;
+    }
+    
+    .blog-content-white {
+        padding: 20px;
+    }
+    
+    .breadcrumbs-inner {
+        padding: 60px 0;
+    }
+    
+    .lightning-bread-1, .lightning-bread-2, .lightning-bread-3, .lightning-bread-4 {
+        transform: scale(0.6);
+    }
+}
+
+@media (max-width: 480px) {
+    .vr-glitch-title {
+        font-size: 24px;
+    }
+    
+    .news-title {
+        font-size: 22px;
+    }
+    
+    .blog-content-white h4 {
+        font-size: 16px;
+    }
+    
+    .blog-meta-white {
+        gap: 10px;
+    }
+    
+    .breadcrumbs-lightning-container {
+        display: none;
+    }
+}
+</style>
+
+<!-- SVG Gradient Definition -->
+<svg style="position: fixed; width: 0; height: 0;">
+    <defs>
+        <linearGradient id="breadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#D71920;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1F3A93;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+</svg>
+
+
+
+
+
+<!-- About Us Start -->
+<div id="rs-video-advanced">
+    <div id="rs-video" class="rs-video">
+        <div class="vr-dynamic-bg"></div>
+        <div class="lightning-overlay">
+            <div class="lightning-bolt bolt1"></div>
+            <div class="lightning-bolt bolt2"></div>
+            <div class="lightning-bolt bolt3"></div>
+            <div class="lightning-bolt bolt4"></div>
+            <div class="lightning-bolt bolt5"></div>
+            <div class="lightning-bolt bolt6"></div>
+        </div>
+        <div class="vr-scan-line"></div>
+
+        <div class="container">
+            <div class="video-content">
+                <a class="popup-vimeo" href="javascript:void(0);" title="Immersive  Reality Tour">
+                    <i class="fa fa-play"></i>
+                </a>
+                <span>✦ REDIRECTMALL ✦</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Animated Black Modal Popup -->
+<div id="vr-video-modal" class="vr-modal">
+    <div class="vr-modal-overlay"></div>
+    <div class="vr-modal-container">
+        <div class="vr-modal-content">
+            <div class="vr-modal-header">
+                <h2>VIRTUAL REALITY EXPERIENCE</h2>
+                <div class="vr-modal-close-wrapper">
+                    <span class="vr-modal-close">&times;</span>
+                </div>
+            </div>
+            <div class="vr-modal-body">
+                <div class="video-wrapper">
+                    <iframe id="vimeo-player" src="https://player.vimeo.com/video/1118159726?autoplay=0&loop=0&title=0&byline=0&portrait=0&badge=0&color=00ffff&background=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; vr" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* ALL STYLES SCOPED UNDER #rs-video-advanced */
+    #rs-video-advanced .rs-video {
+        position: relative;
+        width: 100%;
+        max-width: 1400px;
+        margin: 2rem auto;
+        border-radius: 48px;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+        overflow: hidden;
+        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(0, 255, 255, 0.2) inset, 0 0 0 4px rgba(255, 0, 255, 0.1) inset;
+        transition: transform 0.3s ease, box-shadow 0.4s ease;
+        backdrop-filter: blur(0px);
+        cursor: pointer;
+    }
+
+    #rs-video-advanced .rs-video::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at 30% 40%, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.1), transparent 70%);
+        animation: rs-rotateGlow 18s infinite linear;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.6;
+    }
+
+    #rs-video-advanced .rs-video::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(100deg, transparent, transparent 45%, rgba(0, 255, 255, 0.25) 48%, rgba(255, 255, 0, 0.5) 50%, rgba(0, 255, 255, 0.25) 52%, transparent 55%);
+        background-size: 200% 200%;
+        pointer-events: none;
+        mix-blend-mode: overlay;
+        animation: rs-lightningFlash 0.28s cubic-bezier(0.8, 0, 0.2, 1) infinite alternate;
+        z-index: 0;
+        opacity: 0.45;
+        border-radius: inherit;
+    }
+
+    #rs-video-advanced .vr-dynamic-bg {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(125deg, rgba(10, 10, 30, 0.6), rgba(20, 30, 70, 0.5), rgba(80, 40, 120, 0.4), rgba(0, 200, 255, 0.2));
+        background-size: 300% 300%;
+        animation: rs-vrGradientFlow 8s ease infinite alternate;
+        pointer-events: none;
+        z-index: 0;
+        border-radius: inherit;
+        mix-blend-mode: color-dodge;
+    }
+
+    #rs-video-advanced .lightning-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        border-radius: 48px;
+        overflow: hidden;
+    }
+
+    #rs-video-advanced .lightning-bolt {
+        position: absolute;
+        background: radial-gradient(ellipse at center, rgba(210, 240, 255, 0.95), rgba(0, 210, 255, 0.4));
+        filter: blur(3px);
+        opacity: 0;
+        transform: rotate(15deg);
+        animation: rs-boltStrike 2.4s infinite ease-in-out;
+        border-radius: 20px;
+    }
+
+    #rs-video-advanced .bolt1 { top: 15%; left: 10%; width: 120px; height: 4px; animation-delay: 0s; background: linear-gradient(90deg, cyan, magenta, cyan); box-shadow: 0 0 12px cyan; }
+    #rs-video-advanced .bolt2 { bottom: 20%; right: 12%; width: 180px; height: 5px; animation-delay: 0.8s; background: linear-gradient(90deg, #00ffff, #ff44ff, cyan); }
+    #rs-video-advanced .bolt3 { top: 45%; left: 75%; width: 140px; height: 3px; animation-delay: 0.3s; background: linear-gradient(90deg, yellow, cyan, white); }
+    #rs-video-advanced .bolt4 { top: 70%; left: 20%; width: 100px; height: 4px; animation-delay: 1.2s; background: linear-gradient(90deg, #ff66cc, cyan, #aaffff); }
+    #rs-video-advanced .bolt5 { top: 10%; right: 25%; width: 200px; height: 5px; animation-delay: 0.5s; background: linear-gradient(90deg, cyan, magenta, #00e0ff); }
+    #rs-video-advanced .bolt6 { bottom: 10%; left: 40%; width: 150px; height: 3px; animation-delay: 1.7s; background: linear-gradient(90deg, #ffcc44, cyan, #88ffff); }
+
+    #rs-video-advanced .vr-scan-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(0deg, rgba(0, 255, 255, 0) 0px, rgba(0, 255, 255, 0) 4px, rgba(0, 255, 255, 0.12) 5px, rgba(255, 0, 255, 0.05) 6px, rgba(0, 255, 255, 0) 8px);
+        pointer-events: none;
+        z-index: 2;
+        border-radius: inherit;
+        animation: rs-scanMove 8s linear infinite;
+    }
+
+    #rs-video-advanced .container {
+        position: relative;
+        z-index: 10;
+        padding: 5rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(2px);
+    }
+
+    #rs-video-advanced .video-content {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    #rs-video-advanced .popup-vimeo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+        height: 140px;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(12px);
+        border-radius: 50%;
+        text-decoration: none;
+        transition: 0.3s ease;
+        position: relative;
+        border: 2px solid rgba(0, 255, 255, 0.7);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3), inset 0 0 20px rgba(255,255,200,0.2);
+        animation: rs-floatPulse 2.2s infinite alternate ease-in-out;
+        cursor: pointer;
+    }
+
+    #rs-video-advanced .popup-vimeo i {
+        font-size: 58px;
+        color: white;
+        text-shadow: 0 0 15px cyan, 0 0 30px magenta, 0 0 45px #0ff;
+        transition: 0.2s;
+        margin-left: 8px;
+    }
+
+    #rs-video-advanced .popup-vimeo:hover {
+        transform: scale(1.08) rotate(2deg);
+        border-color: #ff44ff;
+        box-shadow: 0 0 45px rgba(255, 68, 255, 0.7), 0 0 80px rgba(0, 255, 255, 0.9);
+        background: rgba(20, 20, 40, 0.7);
+    }
+
+    #rs-video-advanced .popup-vimeo:hover i {
+        text-shadow: 0 0 30px white, 0 0 50px #ff00cc, 0 0 70px cyan;
+        transform: scale(1.05);
+    }
+
+    #rs-video-advanced .video-content span {
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        background: linear-gradient(120deg, #aaffff, #ff66ff, #00ffff, #ffaa44);
+        background-size: 300% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: rs-textShift 5s linear infinite;
+        text-shadow: 0 0 8px rgba(0,255,255,0.6);
+        font-family: 'Inter', monospace;
+        backdrop-filter: blur(4px);
+        padding: 0.5rem 1.2rem;
+        border-radius: 60px;
+        display: inline-block;
+    }
+
+    #rs-video-advanced .rs-video:hover .lightning-bolt {
+        animation-duration: 0.8s;
+        opacity: 0.95;
+    }
+
+    #rs-video-advanced .rs-video:hover::after {
+        animation: rs-lightningFlash 0.12s infinite alternate;
+        opacity: 0.85;
+    }
+
+    #rs-video-advanced .rs-video:hover {
+        box-shadow: 0 30px 55px rgba(0, 255, 255, 0.3), 0 0 0 3px rgba(0, 255, 255, 0.5) inset;
+        transform: scale(1.01);
+    }
+
+    /* ANIMATED BLACK MODAL POPUP */
+    .vr-modal {
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
+
+    .vr-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        opacity: 0;
+        transition: opacity 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    .vr-modal-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: scale(0.9) translateY(30px);
+        transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+    }
+
+    .vr-modal.show {
+        display: block;
+    }
+
+    .vr-modal.show .vr-modal-overlay {
+        opacity: 0.96;
+    }
+
+    .vr-modal.show .vr-modal-container {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    .vr-modal-content {
+        position: relative;
+        background: linear-gradient(135deg, #0a0a0a 0%, #0d0d1a 50%, #0a0a15 100%);
+        margin: 0 auto;
+        padding: 0;
+        width: 85%;
+        max-width: 1100px;
+        border-radius: 32px;
+        box-shadow: 0 0 80px rgba(0, 255, 255, 0.4), 0 0 40px rgba(255, 0, 255, 0.3), inset 0 1px 0 rgba(0, 255, 255, 0.2);
+        border: 2px solid rgba(0, 255, 255, 0.7);
+        overflow: hidden;
+    }
+
+    .vr-modal-header {
+        padding: 1rem 2rem;
+        background: rgba(0, 0, 0, 0.6);
+        border-bottom: 1px solid rgba(0, 255, 255, 0.4);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .vr-modal-header h2 {
+        margin: 0;
+        font-size: 1.3rem;
+        font-weight: 700;
+        background: linear-gradient(120deg, #00ffff, #ff66ff, #00ffff);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        letter-spacing: 3px;
+        font-family: 'Inter', monospace;
+        animation: headerGlow 3s ease infinite;
+    }
+
+    @keyframes headerGlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .vr-modal-close-wrapper {
+        cursor: pointer;
+    }
+
+    .vr-modal-close {
+        color: #00ffff;
+        font-size: 42px;
+        font-weight: bold;
+        transition: 0.2s;
+        line-height: 1;
+        display: inline-block;
+        text-shadow: 0 0 10px cyan;
+    }
+
+    .vr-modal-close:hover {
+        color: #ff44ff;
+        transform: rotate(90deg) scale(1.2);
+        text-shadow: 0 0 20px magenta;
+        display: inline-block;
+    }
+
+    .vr-modal-body {
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 0 50px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0,255,255,0.1);
+    }
+
+    .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        border: none;
+    }
+
+    /* ANIMATIONS */
+    @keyframes rs-rotateGlow {
+        0% { transform: rotate(0deg); opacity: 0.4; }
+        50% { transform: rotate(10deg); opacity: 0.7; }
+        100% { transform: rotate(360deg); opacity: 0.4; }
+    }
+    @keyframes rs-lightningFlash {
+        0% { opacity: 0.15; background-position: 0% 0%; }
+        25% { opacity: 0.75; background-position: 15% 5%; }
+        50% { opacity: 0.35; background-position: 30% 10%; }
+        75% { opacity: 0.85; background-position: 45% 5%; }
+        100% { opacity: 0.2; background-position: 100% 0%; }
+    }
+    @keyframes rs-boltStrike {
+        0% { opacity: 0; transform: scaleX(0.3) translateX(-20px); filter: blur(8px); }
+        15% { opacity: 1; transform: scaleX(1) translateX(5px); filter: blur(2px); box-shadow: 0 0 20px cyan, 0 0 30px magenta; }
+        30% { opacity: 0.8; transform: scaleX(1.1) translateX(10px); }
+        70% { opacity: 0.3; transform: scaleX(0.9) translateX(-5px); }
+        100% { opacity: 0; transform: scaleX(0.2) translateX(-40px); filter: blur(12px); }
+    }
+    @keyframes rs-vrGradientFlow {
+        0% { background-position: 0% 30%; opacity: 0.5; }
+        50% { background-position: 100% 70%; opacity: 0.85; }
+        100% { background-position: 0% 30%; opacity: 0.5; }
+    }
+    @keyframes rs-floatPulse {
+        0% { transform: translateY(0px) scale(1); box-shadow: 0 0 15px rgba(0, 255, 255, 0.6), 0 0 30px rgba(255, 0, 255, 0.3); }
+        100% { transform: translateY(-12px) scale(1.02); box-shadow: 0 0 35px rgba(0, 255, 255, 0.9), 0 0 55px rgba(255, 0, 255, 0.6); }
+    }
+    @keyframes rs-textShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    @keyframes rs-scanMove {
+        0% { background-position: 0 0; }
+        100% { background-position: 0 100%; }
+    }
+    @keyframes rs-fadeOutSpark {
+        0% { opacity: 0.9; transform: scale(1); }
+        100% { opacity: 0; transform: scale(2.5); }
+    }
+
+    @media (max-width: 768px) {
+        #rs-video-advanced .popup-vimeo { width: 100px; height: 100px; }
+        #rs-video-advanced .popup-vimeo i { font-size: 42px; }
+        #rs-video-advanced .video-content span { font-size: 1.2rem; letter-spacing: 3px; }
+        #rs-video-advanced .container { padding: 3rem 1.5rem; }
+        #rs-video-advanced .rs-video { border-radius: 32px; }
+        .vr-modal-content { width: 95%; }
+        .vr-modal-header h2 { font-size: 0.9rem; letter-spacing: 2px; }
+        .vr-modal-close { font-size: 36px; }
+        .vr-modal-body { padding: 1rem; }
+    }
+</style>
+
+<script>
+    (function() {
+        // Get modal elements
+        var modal = document.getElementById('vr-video-modal');
+        var playBtn = document.querySelector('#rs-video-advanced .popup-vimeo');
+        var closeBtn = document.querySelector('.vr-modal-close');
+        var iframe = document.getElementById('vimeo-player');
+        var originalSrc = iframe ? iframe.src : '';
+
+        // Function to open modal with animation and auto-play
+        function openModal() {
+            if (modal) {
+                // Add show class to trigger animations
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+                
+                // Add lightning flash effect on the video section
+                var videoDiv = document.querySelector('#rs-video-advanced .rs-video');
+                if (videoDiv) {
+                    videoDiv.style.transition = 'all 0.2s';
+                    videoDiv.style.boxShadow = '0 0 70px rgba(0, 255, 255, 0.9), 0 0 120px rgba(255, 0, 255, 0.7)';
+                    setTimeout(function() { 
+                        if(videoDiv) videoDiv.style.boxShadow = ''; 
+                    }, 500);
+                }
+                
+                // Auto-play the video when modal opens
+                if (iframe) {
+                    // Extract video ID and build autoplay URL
+                    var videoId = '1118159726';
+                    iframe.src = 'https://player.vimeo.com/video/' + videoId + '?autoplay=1&loop=0&title=0&byline=0&portrait=0&badge=0&color=00ffff&background=0';
+                }
+            }
+        }
+
+        // Function to close modal with animation and stop video
+        function closeModal() {
+            if (modal) {
+                // Remove show class to trigger closing animations
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+                
+                // Stop video when closing (reset iframe src)
+                if (iframe) {
+                    iframe.src = 'https://player.vimeo.com/video/1118159726?autoplay=0&loop=0&title=0&byline=0&portrait=0&badge=0&color=00ffff&background=0';
+                }
+            }
+        }
+
+        // Event listeners
+        if (playBtn) {
+            playBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal();
+            });
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeModal);
+        }
+
+        // Close modal when clicking outside the modal container
+        window.addEventListener('click', function(event) {
+            if (modal && modal.classList.contains('show')) {
+                // Check if click is on the overlay (not on content)
+                if (event.target === modal || event.target.classList.contains('vr-modal-overlay')) {
+                    closeModal();
+                }
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal && modal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+
+        // Lightning randomizer for bolts
+        var bolts = document.querySelectorAll('#rs-video-advanced .lightning-bolt');
+        function randomizeBolts() {
+            bolts.forEach(function(bolt) {
+                var randomDur = (Math.random() * 1.8 + 0.8).toFixed(2);
+                bolt.style.animationDuration = randomDur + 's';
+            });
+        }
+        if (bolts.length) {
+            setInterval(randomizeBolts, 4000);
+            randomizeBolts();
+        }
+
+        // Spark effect on mouse move
+        var rsVideo = document.querySelector('#rs-video-advanced .rs-video');
+        if (rsVideo) {
+            rsVideo.addEventListener('mousemove', function(e) {
+                var rect = this.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                var y = e.clientY - rect.top;
+                var spark = document.createElement('div');
+                spark.style.position = 'absolute';
+                spark.style.left = x + 'px';
+                spark.style.top = y + 'px';
+                spark.style.width = '8px';
+                spark.style.height = '8px';
+                spark.style.background = 'radial-gradient(circle, cyan, magenta)';
+                spark.style.borderRadius = '50%';
+                spark.style.filter = 'blur(3px)';
+                spark.style.pointerEvents = 'none';
+                spark.style.zIndex = '999';
+                spark.style.opacity = '0.8';
+                spark.style.boxShadow = '0 0 15px cyan, 0 0 25px magenta';
+                spark.style.animation = 'rs-fadeOutSpark 0.5s forwards';
+                this.appendChild(spark);
+                setTimeout(function() { if(spark && spark.remove) spark.remove(); }, 500);
+            });
+
+            // 3D tilt effect
+            rsVideo.addEventListener('mousemove', function(ev) {
+                var rect = this.getBoundingClientRect();
+                var centerX = rect.left + rect.width / 2;
+                var centerY = rect.top + rect.height / 2;
+                var deltaX = (ev.clientX - centerX) / 30;
+                var deltaY = (ev.clientY - centerY) / 30;
+                this.style.transform = 'perspective(1200px) rotateY(' + (deltaX * 0.8) + 'deg) rotateX(' + (-deltaY * 0.6) + 'deg) scale(1.01)';
+            });
+            rsVideo.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1200px) rotateY(0deg) rotateX(0deg) scale(1)';
+                this.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+                var self = this;
+                setTimeout(function() { if(self) self.style.transition = ''; }, 400);
+            });
+        }
+    })();
+</script>
+<!-- About Us End -->
+ <div id="rs-partner" class="rs-partner pt-70 pb-70">
+            <div class="container">
+				<div class="rs-carousel owl-carousel" data-loop="true" data-items="5" data-margin="80" data-autoplay="true" data-autoplay-timeout="5000" data-smart-speed="2000" data-dots="false" data-nav="false" data-nav-speed="false" data-mobile-device="2" data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="4" data-ipad-device-nav="false" data-ipad-device-dots="false" data-md-device="5" data-md-device-nav="false" data-md-device-dots="false">
+                    <div class="partner-item">
+                        <a href="#"><img src="img/s1.jpg" alt="Partner Image"></a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="#"><img src="img/s2.jpg" alt="Partner Image"></a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="#"><img src="img/s3.jpg" alt="Partner Image"></a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="#"><img src="img/s4.jpg" alt="Partner Image"></a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="#"><img src="img/s5.jpg" alt="Partner Image"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Courses, Counter, Events, Team, Calltoaction, Latest News, Products, Testimonial, Partner sections continue... -->

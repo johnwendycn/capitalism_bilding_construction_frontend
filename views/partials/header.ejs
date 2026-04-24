@@ -1,0 +1,187 @@
+<header id="rs-header" class="rs-header">
+    <!-- Header Top Start -->
+    <div class="rs-header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <div class="header-contact">
+                        <div id="info-details" class="widget-text">
+                            <i class="glyph-icon flaticon-email"></i>
+                            <div class="info-text">
+                                <a href="mailto:info@domain.com">
+                                    <span>Mail Us</span>
+                                    info@RedirectMall.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="logo-area text-center">
+                        <a href="/"><img src="/img/captal.png" alt="logo" style="max-height: 50px; width: auto;"></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="header-contact pull-right">
+                       <div class="logo-area text-center">
+                        <a href="/"><img src="/img/wallstreet.png" alt="logo" style="max-height: 50px; width: auto;"></a>
+                    </div>
+                    </div>
+                </div>
+            </div>                
+        </div>
+    </div>
+    <!-- Header Top End -->
+
+    <!-- Menu Start -->
+    <div class="menu-area menu-sticky">
+        <div class="container">
+            <div class="main-menu">
+                <div class="row relative">
+                    <div class="col-sm-12">
+                        <a class="rs-menu-toggle"><i class="fa fa-bars"></i>Menu</a>
+                        <nav class="rs-menu">
+                            <ul class="nav-menu">
+                                <li class="<%= activeHome ? 'current-menu-item current_page_item' : '' %>">
+                                    <a href="/">Home</a>
+                                </li>
+                                <li class="<%= activeAbout ? 'current-menu-item current_page_item' : '' %>">
+                                    <a href="/about">About</a>
+                                </li>
+                                <li class="<%= activeEvents ? 'current-menu-item current_page_item' : '' %>">
+                                    <a href="/events">Event</a>
+                                </li>
+                                <li class="<%= activeNews ? 'current-menu-item current_page_item' : '' %>">
+                                    <a href="/news">News</a>
+                                </li>
+                                <li class="<%= activeContact ? 'current-menu-item current_page_item' : '' %>">
+                                    <a href="/contact">Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="right-bar-icon rs-offcanvas-link text-right" style="display: flex; align-items: center; gap: 15px;">
+                            <!-- Live Search Input -->
+                            <div class="live-search-wrapper" style="position: relative;">
+                                <input 
+                                    type="text" 
+                                    id="headerLiveSearch" 
+                                    class="header-search-input" 
+                                    placeholder="Search anything on this page..." 
+                                    aria-label="Search entire page content"
+                                    style="padding: 8px 15px; font-size: 14px; border: 1px solid #ddd; border-radius: 20px; background: #fff; outline: none; width: 220px; transition: all 0.3s;"
+                                    onfocus="this.style.width='280px'; this.style.borderColor='#007bff'; this.style.boxShadow='0 0 0 2px rgba(0,123,255,0.1)'"
+                                    onblur="this.style.width='220px'; this.style.borderColor='#ddd'; this.style.boxShadow='none'"
+                                >
+                                <i class="fa fa-search" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #999; pointer-events: none; font-size: 14px;"></i>
+                            </div>
+                            <a id="nav-expander" class="nav-expander fixed">
+                                <i class="fa fa-bars fa-lg white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu End -->
+</header>
+
+<script>
+    // Live search functionality for the header search bar
+    const headerSearchInput = document.getElementById('headerLiveSearch');
+    let headerDebounceTimer;
+    let headerScrolledToMatch = false;
+
+    // Function to clear all highlights
+    function clearHighlights() {
+        const highlighted = document.querySelectorAll('.search-highlight');
+        highlighted.forEach(el => {
+            const parent = el.parentNode;
+            parent.replaceChild(document.createTextNode(el.textContent), el);
+            parent.normalize();
+        });
+    }
+
+    // Function to highlight text in the page
+    function highlightText(searchTerm) {
+        if (!searchTerm || searchTerm.trim() === '') {
+            clearHighlights();
+            return;
+        }
+
+        clearHighlights();
+
+        const walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT,
+            {
+                acceptNode: function(node) {
+                    if (node.parentElement.tagName === 'SCRIPT' || 
+                        node.parentElement.tagName === 'STYLE' ||
+                        node.parentElement.classList?.contains('search-highlight') ||
+                        node.parentElement.id === 'headerLiveSearch') {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            }
+        );
+
+        const textNodes = [];
+        while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+        const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`(${escapedTerm})`, 'gi');
+        
+        textNodes.forEach(node => {
+            const text = node.nodeValue;
+            if (regex.test(text)) {
+                const span = document.createElement('span');
+                span.className = 'search-highlight';
+                span.innerHTML = text.replace(regex, '<mark style="background:#ff9800; color:#000; padding: 2px 0; border-radius: 3px; font-weight: normal;">$1</mark>');
+                node.parentNode.replaceChild(span, node);
+            }
+        });
+
+        // Scroll to first match
+        const firstMatch = document.querySelector('mark');
+        if (firstMatch && !headerScrolledToMatch) {
+            firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            headerScrolledToMatch = true;
+            setTimeout(() => { headerScrolledToMatch = false; }, 500);
+        }
+    }
+
+    // Live search event listener with debouncing
+    if (headerSearchInput) {
+        headerSearchInput.addEventListener('input', function(e) {
+            clearTimeout(headerDebounceTimer);
+            const searchTerm = e.target.value.trim();
+            
+            headerDebounceTimer = setTimeout(() => {
+                highlightText(searchTerm);
+            }, 300);
+        });
+
+        // Clear highlights when input is cleared
+        headerSearchInput.addEventListener('keyup', function(e) {
+            if (e.target.value === '') {
+                clearHighlights();
+            }
+        });
+    }
+</script>
+
+<style>
+    /* Responsive styles for mobile */
+    @media (max-width: 992px) {
+        .live-search-wrapper {
+            display: none;
+        }
+    }
+    
+    /* Optional: Add focus styles */
+    .header-search-input:focus {
+        width: 280px !important;
+    }
+</style>

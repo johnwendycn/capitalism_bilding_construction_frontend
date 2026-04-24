@@ -1,0 +1,150 @@
+<!-- modernizr js -->
+<script src="/js/modernizr-2.8.3.min.js"></script>
+<!-- jquery latest version -->
+<script src="/js/jquery.min.js"></script>
+<!-- bootstrap js -->
+<script src="/js/bootstrap.min.js"></script>
+<!-- owl.carousel js -->
+<script src="/js/owl.carousel.min.js"></script>
+<!-- slick.min js -->
+<script src="/js/slick.min.js"></script>
+<!-- isotope.pkgd.min js -->
+<script src="/js/isotope.pkgd.min.js"></script>
+<!-- imagesloaded.pkgd.min js -->
+<script src="/js/imagesloaded.pkgd.min.js"></script>
+<!-- wow js -->
+<script src="/js/wow.min.js"></script>
+<!-- counter top js -->
+<script src="/js/waypoints.min.js"></script>
+<script src="/js/jquery.counterup.min.js"></script>
+<!-- magnific popup -->
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<!-- rsmenu js -->
+<script src="/js/rsmenu-main.js"></script>
+<!-- plugins js -->
+<script src="/js/plugins.js"></script>
+<!-- main js -->
+<script src="/js/main.js"></script>
+
+<!-- Additional CSS for off-canvas menu to work -->
+<style>
+    .right_menu_togle {
+        position: fixed;
+        right: -300px;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        background: #fff;
+        z-index: 99999;
+        transition: all 0.5s ease;
+        overflow-y: auto;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    }
+    .right_menu_togle.open {
+        right: 0;
+    }
+    body.offcanvas-open {
+        overflow: hidden;
+    }
+    .close-btn {
+        text-align: right;
+        padding: 15px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+    .canvas-logo {
+        padding: 20px;
+        text-align: center;
+    }
+    .canvas-logo img {
+        max-width: 150px;
+    }
+    .sidebarnav_menu {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    .sidebarnav_menu li {
+        border-bottom: 1px solid #eee;
+    }
+    .sidebarnav_menu li a {
+        display: block;
+        padding: 12px 20px;
+        color: #333;
+        text-decoration: none;
+    }
+    .sidebarnav_menu li a:hover {
+        background: #f5f5f5;
+    }
+    .sidebarnav_menu .sub-menu {
+        padding-left: 20px;
+        display: none;
+    }
+    .sidebarnav_menu .menu-item-has-children > a {
+        position: relative;
+    }
+    .sidebarnav_menu .menu-item-has-children > a:after {
+        content: '+';
+        position: absolute;
+        right: 20px;
+    }
+    .search-wrap {
+        padding: 20px;
+    }
+    .search-wrap input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+</style>
+
+<script>
+    // Off-canvas menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        // Open menu
+        var navExpander = document.getElementById('nav-expander');
+        var navClose = document.getElementById('nav-close');
+        var rightMenu = document.querySelector('.right_menu_togle');
+        
+        if (navExpander) {
+            navExpander.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (rightMenu) {
+                    rightMenu.classList.add('open');
+                    document.body.classList.add('offcanvas-open');
+                }
+            });
+        }
+        
+        if (navClose) {
+            navClose.addEventListener('click', function() {
+                if (rightMenu) {
+                    rightMenu.classList.remove('open');
+                    document.body.classList.remove('offcanvas-open');
+                }
+            });
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (rightMenu && rightMenu.classList.contains('open')) {
+                if (!rightMenu.contains(e.target) && !navExpander.contains(e.target)) {
+                    rightMenu.classList.remove('open');
+                    document.body.classList.remove('offcanvas-open');
+                }
+            }
+        });
+        
+        // Submenu toggle
+        var menuItems = document.querySelectorAll('.sidebarnav_menu .menu-item-has-children > a');
+        menuItems.forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                var submenu = this.nextElementSibling;
+                if (submenu) {
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+    });
+</script>

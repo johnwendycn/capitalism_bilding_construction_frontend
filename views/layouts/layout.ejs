@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <%- include('../partials/head') %>
+    <title><%= title %> | Edulearn</title>
+</head>
+<body class="home1">
+    <!-- Preloader -->
+    <%- include('../partials/preloader') %>
+    
+    <!-- Full width header Start -->
+    <%- include('../partials/toolbar') %>
+    <%- include('../partials/header') %>
+    
+    <!-- Main Content Area -->
+    <%- include('../pages/' + page) %>
+    
+    <!-- Footer Start -->
+    <%- include('../partials/footer') %>
+    
+    <!-- Canvas Menu (Off-canvas menu) -->
+    <%- include('../partials/canvas-menu') %>
+    
+    <!-- Search Modal -->
+    <%- include('../partials/search-modal') %>
+    
+    <!-- Scripts -->
+    <%- include('../partials/scripts') %>
+    
+    <!-- Initialize Canvas Menu -->
+    <script>
+        // Initialize off-canvas menu when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            var navExpander = document.getElementById('nav-expander');
+            var navClose = document.getElementById('nav-close');
+            var rightMenuTogle = document.querySelector('.right_menu_togle');
+            
+            if (navExpander) {
+                navExpander.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (rightMenuTogle) {
+                        rightMenuTogle.classList.add('open');
+                        document.body.classList.add('offcanvas-open');
+                    }
+                });
+            }
+            
+            if (navClose) {
+                navClose.addEventListener('click', function() {
+                    if (rightMenuTogle) {
+                        rightMenuTogle.classList.remove('open');
+                        document.body.classList.remove('offcanvas-open');
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <!-- Page Specific Scripts -->
+    <% if (typeof pageScripts !== 'undefined') { %>
+        <%- pageScripts %>
+    <% } %>
+</body>
+</html>
